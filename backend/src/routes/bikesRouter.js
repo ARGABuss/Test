@@ -1,6 +1,6 @@
 import express from "express";
 import { body, validationResult, param, query } from "express-validator";
-import { Bike, Client } from "../models/index.js";
+import { Bike, Client  } from "../models/index.js";
 import { Op } from "sequelize";
 
 const router = express.Router();
@@ -98,7 +98,7 @@ router.get("/",[query("plate").optional().isString()],validate, async (req, res,
   }
 );
 
-// ── GET /api/bikes/:id ────────────────────────────────────────────────────────
+// ── GET /api/bikes/:id 
 router.get(
   "/:id",
   [param("id").isInt({ min: 1 }).withMessage("ID inválido")],
