@@ -1,6 +1,7 @@
 import express from "express";
-import { body, validationResult } from "express-validator";
+import { body, validationResult, param, query } from "express-validator";
 import { Bike, Client } from "../models/index.js";
+import { Op } from "sequelize";
 
 const router = express.Router();
 
@@ -15,8 +16,7 @@ const validate = (req, res, next) => {
 };
 
 // ── POST /api/bikes
-router.post(
-  "/",
+router.post("/",
   [
     body("placa")
       .trim()
@@ -38,24 +38,25 @@ router.post(
       .optional({ nullable: true, checkFalsy: true })
       .isInt({ min: 1 })
       .withMessage("El cilindraje debe ser un entero mayor a 0"),
-    body("clienteId")
+    body("clientId")
       .isInt({ min: 1 })
       .withMessage("El ID de cliente debe ser un entero positivo"),
   ],
   validate,
   async (req, res, next) => {
     try {
-      const { placa, brand, model, cylinder, clienteId } = req.body;
+      const { placa, brand, model, cylinder, clientId } = req.body;
       const placaUpper = placa.toUpperCase().trim();
 
       // Validate client exists
-      const cliente = await Cliente.findByPk(clienteId);
-      if (!cliente) {
+      console.log("Client found:", clientId); // Debugging line
+      const client = await Client.findByPk(clientId);
+      if (!client) {
         return res.status(404).json({ success: false, error: "Cliente no encontrado" });
       }
 
       // Check unique plate
-      const existing = await bike.findOne({ where: { placa: placaUpper } });
+      const existing = await Bike.findOne({ where: { placa: placaUpper } });
       if (existing) {
         return res.status(409).json({
           success: false,
@@ -68,7 +69,7 @@ router.post(
         brand: brand.trim(),
         model: model.trim(),
         cylinder: cylinder || null,
-        clienteId,
+        clientId: clientId,
       });
 
       return res.status(201).json({ success: true, data: bike });
@@ -79,11 +80,7 @@ router.post(
 );
 
 // ── GET /api/bikes?plate=
-router.get(
-  "/",
-  [query("plate").optional().isString()],
-  validate,
-  async (req, res, next) => {
+router.get("/",[query("plate").optional().isString()],validate, async (req, res, next) => {
     try {
       const plate = req.query.plate || "";
       const where = plate ? { placa: { [Op.iLike]: `%${plate}%` } } : {};
