@@ -122,11 +122,11 @@ export default function OrdersListPage() {
                   {orders.map((o) => (
                     <tr key={o.id}>
                       <td className="text-muted font-monospace small">#{String(o.id).padStart(4, '0')}</td>
-                      <td className="font-monospace fw-bold">{o.moto?.placa}</td>
-                      <td className="text-muted">{o.moto?.brand} {o.moto?.model}</td>
+                      <td className="font-monospace fw-bold">{o.bike?.placa}</td>
+                      <td className="text-muted">{o.bike?.brand} {o.bike?.model}</td>
                       <td>
-                        <div className="fw-semibold">{o.moto?.cliente?.name}</div>
-                        <small className="text-muted">{o.moto?.cliente?.phone}</small>
+                        <div className="fw-semibold">{o.bike?.client?.name}</div>
+                        <small className="text-muted">{o.bike?.client?.phone}</small>
                       </td>
                       <td><StatusBadge status={o.status} /></td>
                       <td className="text-muted small">{fmtDate(o.entryDate)}</td>

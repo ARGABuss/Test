@@ -29,7 +29,7 @@ export const clientsService = {
   create:  (data)        => api.post('/clients', data),
 }
 
-export const bikeService = {
+export const bikesService = {
   getAll:  (plate = '') => api.get(`/bikes${plate ? `?plate=${encodeURIComponent(plate)}` : ''}`),
   getById: (id)         => api.get(`/bikes/${id}`),
   create:  (data)       => api.post('/bikes', data),

@@ -6,7 +6,7 @@ import Item from "./item.js";
 
 
 Client.hasMany(Bike, { foreignKey: "clientId", as : "bikes",onDelete: "RESTRICT", onUpdate: "CASCADE" });
-Bike.belongsTo(Client, { foreignKey: "clientId" });
+Bike.belongsTo(Client, { foreignKey: "clientId" , as : "client"});
 
 
 // Bike 1:N Order

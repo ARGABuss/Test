@@ -83,8 +83,7 @@ router.post("/",
 router.get("/",[query("plate").optional().isString()],validate, async (req, res, next) => {
     try {
       const plate = req.query.plate || "";
-      const where = plate ? { placa: { [Op.iLike]: `%${plate}%` } } : {};
-
+      const where = plate ? { placa: { [Op.like]: `%${plate}%` } } : {};
       const bikes = await Bike.findAll({
         where,
         include: [{ model: Client, as: "client", attributes: ["id", "name", "phone", "email"] }],

@@ -21,7 +21,7 @@ export const STATUS_LABELS = {
 export const STATUS_COLORS = {
   RECIBIDA:    'primary',
   DIAGNOSTICO: 'warning',
-  EN_PROCESO:  'orange',
+  EN_PROCESO:  'warning',
   LISTA:       'success',
   ENTREGADA:   'secondary',
   CANCELADA:   'danger',
