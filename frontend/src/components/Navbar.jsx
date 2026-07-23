@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import MotoIcon from './MotoIcon'
 
 export default function Navbar() {
   return (
@@ -32,7 +33,7 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink to="/bikes" className={({ isActive }) => `nav-link px-3 rounded ${isActive ? 'active bg-warning text-dark fw-semibold' : 'text-light'}`}>
-                <i className="bi bi-bicycle me-1" />Motos
+                <MotoIcon className="me-1" />Motos
               </NavLink>
             </li>
           </ul>

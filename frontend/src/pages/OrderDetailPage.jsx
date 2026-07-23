@@ -5,6 +5,7 @@ import { STATUS_LABELS, getAllowedTransitions } from '../services/workOrderState
 import StatusBadge from '../components/StatusBadge'
 import LoadingSpinner from '../components/LoadingSpinner'
 import AlertMessage from '../components/AlertMessage'
+import MotoIcon from '../components/MotoIcon'
 
 const fmtDate = (d) => new Date(d).toLocaleString('es-CO', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })
 const fmtCOP  = (v) => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(Number(v))
@@ -281,7 +282,7 @@ export default function OrderDetailPage() {
                 <div className="card-body">
                   <p className="text-muted small fw-semibold text-uppercase mb-2">Moto</p>
                   <div className="d-flex gap-3 align-items-center">
-                    <i className="bi bi-bicycle fs-2 text-warning" />
+                    <MotoIcon className="fs-2 text-warning" />
                     <div>
                       <div className="fw-bold font-monospace fs-5">{order.bike?.placa}</div>
                       <div className="text-muted small">{order.bike?.brand} {order.bike?.model}</div>

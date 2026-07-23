@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { clientsService, bikesService, ordersService } from '../services/api'
 import AlertMessage from '../components/AlertMessage'
+import MotoIcon from '../components/MotoIcon'
 
 const STATUS_STEPS = {
   search:          0,
@@ -203,7 +204,7 @@ export default function NewOrderPage() {
           <div>
             <div className={`card border-0 shadow-sm mb-3 ${newBikeId ? 'border-success' : ''}`}>
               <div className="card-body d-flex gap-3 align-items-center">
-                <i className="bi bi-bicycle fs-1 text-warning" />
+                <MotoIcon className="fs-1 text-warning" />
                 <div>
                   <div className="fw-bold font-monospace fs-5">{foundBike?.placa || bikeForm.placa}</div>
                   <div className="text-muted">{foundBike?.brand || bikeForm.brand} {foundBike?.model || bikeForm.model}</div>

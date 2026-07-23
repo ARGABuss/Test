@@ -4,6 +4,7 @@ import { clientsService, ordersService } from '../services/api'
 import StatusBadge from '../components/StatusBadge'
 import LoadingSpinner from '../components/LoadingSpinner'
 import AlertMessage from '../components/AlertMessage'
+import MotoIcon from '../components/MotoIcon'
 
 const fmtDate = (d) => new Date(d).toLocaleDateString('es-CO', { day: '2-digit', month: '2-digit', year: 'numeric' })
 const fmtCOP  = (v) => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(Number(v))
@@ -75,11 +76,11 @@ export default function ClientDetailPage() {
         <div className="col-12 col-md-6">
           <div className="card border-0 shadow-sm h-100">
             <div className="card-header bg-white fw-bold">
-              <i className="bi bi-bicycle me-2 text-warning" />Motos ({client.bikes?.length || 0})
+              <MotoIcon className="me-2 text-warning" />Motos ({client.bikes?.length || 0})
             </div>
             {!client.bikes?.length ? (
               <div className="text-center py-4 text-muted">
-                <i className="bi bi-bicycle fs-1 d-block mb-2" />
+                <MotoIcon className="fs-1 d-block mb-2" />
                 <p className="mb-0 small">Sin motos registradas</p>
               </div>
             ) : (
@@ -87,7 +88,7 @@ export default function ClientDetailPage() {
                 {client.bikes.map((b) => (
                   <li key={b.id} className="list-group-item px-4 py-3">
                     <Link to={`/bikes/${b.id}`} className="text-decoration-none d-flex align-items-center gap-3">
-                      <i className="bi bi-bicycle fs-4 text-warning" />
+                      <MotoIcon className="fs-4 text-warning" />
                       <div>
                         <div className="fw-bold font-monospace text-dark">{b.placa}</div>
                         <small className="text-muted">{b.brand} {b.model}{b.cylinder ? ` · ${b.cylinder}cc` : ''}</small>

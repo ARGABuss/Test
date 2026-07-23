@@ -5,6 +5,8 @@ import NewOrderPage from './pages/NewOrderPage'
 import OrderDetailPage from './pages/OrderDetailPage'
 import ClientsPage from './pages/ClientsPage'
 import ClientDetailPage from './pages/ClientDetailPage'
+import BikesPage from './pages/BikesPage'
+import BikeDetailPage from './pages/BikeDetailPage'
 
 export default function App() {
   return (
@@ -17,7 +19,11 @@ export default function App() {
           <Route path="/orders/new" element={<NewOrderPage />} />
           <Route path="/orders/:id" element={<OrderDetailPage />} />
           <Route path="/clients" element={<ClientsPage />} />
-         <Route path="/clients/:id" element={<ClientDetailPage />} />
+          <Route path="/clients/:id" element={<ClientDetailPage />} />
+          <Route path="/bikes" element={<BikesPage />} />
+          <Route path="/bikes/:id" element={<BikeDetailPage />} />
+
+
 
         </Routes>
       </div>
