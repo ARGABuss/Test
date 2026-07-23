@@ -1,16 +1,39 @@
-# React + Vite
+# MotoTaller - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend React para sistema de gestión de taller de motos.
 
-Currently, two official plugins are available:
+## Tecnologías
+- React + Vite
+- React Router DOM
+- Axios
+- Bootstrap 5 + Bootstrap Icons
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Requisitos
+- Node.js 18+
+- Backend corriendo en puerto 4000
 
-## React Compiler
+## Instalación
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Variables de entorno
+## Crea un archivo .env en la raíz con:
 
-## Expanding the ESLint configuration
+VITE_API_URL=http://localhost:4000/api
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Ejecución
+## Desarrollo
+npm run dev
+
+# Producción
+npm run build
+
+## Vistas disponibles
+## Ruta	                        Descripción
+    /	                    Listado de órdenes con filtros y paginación
+    /orders/new	            Crear orden con registro rápido de cliente y moto
+    /orders/:id	            Detalle de orden con ítems y cambio de estado
+    /clients	            Listado de clientes
+    /clients/:id	        Detalle de cliente con motos y órdenes
+    /bikes	                Listado de motos
+    /bikes/:id	            Detalle de moto con historial de órdenes
