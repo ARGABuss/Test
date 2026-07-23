@@ -1,11 +1,14 @@
-export default function AlertMessage({ type = 'info', message, onClose }) {
-  const map = { error: 'danger', success: 'success', info: 'info' }
+import { STATUS_LABELS, STATUS_COLORS } from '../services/workOrderStateMachine'
+
+export default function StatusBadge({ status, size = 'sm' }) {
+  const label = STATUS_LABELS[status] || status
+  const color = STATUS_COLORS[status] || 'secondary'
+  const fs = size === 'lg' ? 'fs-6' : 'small'
+  const textDark = ['warning'].includes(color) ? 'text-dark' : ''
+
   return (
-    <div className={`alert alert-${map[type]} d-flex align-items-center justify-content-between mb-0`} role="alert">
-      <span>{message}</span>
-      {onClose && (
-        <button type="button" className="btn-close ms-3" onClick={onClose} />
-      )}
-    </div>
+    <span className={`badge bg-${color} ${textDark} ${fs}`}>
+      {label}
+    </span>
   )
 }
